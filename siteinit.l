@@ -7,6 +7,8 @@
 (setq *move-forward-after-undo-deletion* t)
 ;; C-x C-wをEmacsと同じにする
 (define-key ctl-x-map #\C-w 'emacs-write-file)
+;; シンボリックリンクの編集時にリンクを切らない
+(setf backup-by-copying t)
 
 ;;; キーバインディングの設定
 ;; Alt-rで正規表現置換
