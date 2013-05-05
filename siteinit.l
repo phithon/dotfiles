@@ -13,3 +13,7 @@
 (global-set-key #\M-r 'query-replace-regexp)
 ;; C-x hでバッファ全体を選択
 (define-key ctl-x-map #\h 'selection-whole-buffer)
+
+;;; Git
+;; C-x cで開くシェルをGit Bashにする
+(setf *eshell* "C:\\Program Files (x86)\\Git\\bin\\sh.exe --login -i")
