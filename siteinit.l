@@ -23,3 +23,7 @@
 ;;; javascript-mode
 (load-library "javascript-mode")
 (push '("\\.js$" . javascript-mode) *auto-mode-alist*)
+
+;;; scala-mode
+(require "scala-mode")
+(push '("\\.scala$" . ed::scala-mode) *auto-mode-alist*)
