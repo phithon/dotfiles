@@ -18,7 +18,7 @@
 
 ;;; Git
 ;; C-x cで開くシェルをGit Bashにする
-(setf *eshell* "C:\\Program Files (x86)\\Git\\bin\\sh.exe --login -i")
+(setf *eshell* "\"C:\\\\Program Files (x86)\\\\Git\\\\bin\\\\sh.exe\" --login -i")
 
 ;;; javascript-mode
 (load-library "javascript-mode")
