@@ -15,6 +15,8 @@
 ;;; キーバインディングの設定
 ;; Alt-rで正規表現置換
 (global-set-key #\M-r 'query-replace-regexp)
+;; C-x 3で画面を縦分割
+(define-key ctl-x-map #\3 'split-window-vertically)
 ;; C-x hでバッファ全体を選択
 (define-key ctl-x-map #\h 'selection-whole-buffer)
 
