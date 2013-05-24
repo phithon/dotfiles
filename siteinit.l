@@ -11,6 +11,18 @@
 (setf backup-by-copying t)
 ;; MinGWのdiffを使う
 (setf ed::*diff-command-name* "C:\\Progra~2\\Git\\bin\\diff.exe")
+;; カレントバッファでdiff
+; new file: 現在のバッファがファイルに紐づいていればこのバッファ、そうでなければファイルを指定する
+; old file: 別ウィンドウに開いているバッファがファイルに紐づいていればそのバッファ、そうでなければファイルを指定する
+(defun diff-current-buffers ()
+  (interactive)
+  (diff (or (get-buffer-file-name (selected-buffer))
+			(read-file-name "diff(new file): "))
+		(or (and (not (eq (count-windows) 1))
+				 (get-buffer-file-name (window-buffer (next-window (selected-window)))))
+			(read-file-name "other file(older): "))))
+;; C-x dでカレントバッファのdiff
+(define-key ctl-x-map #\d 'diff-current-buffers)
 
 ;;; キーバインディングの設定
 ;; Alt-rで正規表現置換
