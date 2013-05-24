@@ -12,6 +12,7 @@
 ;; インデントでタブを使わない
 (setf *lisp-indent-tabs-mode* nil)
 
+;;; diff
 ;; MinGWのdiffを使う
 (setf ed::*diff-command-name* "C:\\Progra~2\\Git\\bin\\diff.exe")
 ;; カレントバッファでdiff
@@ -19,11 +20,12 @@
 ; old file: 別ウィンドウに開いているバッファがファイルに紐づいていればそのバッファ、そうでなければファイルを指定する
 (defun diff-current-buffers ()
   (interactive)
-  (diff (or (get-buffer-file-name (selected-buffer))
-			(read-file-name "diff(new file): "))
-		(or (and (not (eq (count-windows) 1))
-				 (get-buffer-file-name (window-buffer (next-window (selected-window)))))
-			(read-file-name "other file(older): "))))
+  (let ((current-file-name (get-buffer-file-name (selected-buffer)))
+        (another-file-name (and (not (eq (count-windows) 1))
+                                (get-buffer-file-name (window-buffer (next-window (selected-window)))))))
+    (diff (or current-file-name (read-file-name "diff(new file): "))
+          (or (and (not (eq current-file-name another-file-name)) another-file-name)
+              (read-file-name "another file(older): ")))))
 ;; C-x dでカレントバッファのdiff
 (define-key ctl-x-map #\d 'diff-current-buffers)
 
