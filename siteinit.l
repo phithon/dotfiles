@@ -9,6 +9,9 @@
 (define-key ctl-x-map #\C-w 'emacs-write-file)
 ;; シンボリックリンクの編集時にリンクを切らない
 (setf backup-by-copying t)
+;; インデントでタブを使わない
+(setf *lisp-indent-tabs-mode* nil)
+
 ;; MinGWのdiffを使う
 (setf ed::*diff-command-name* "C:\\Progra~2\\Git\\bin\\diff.exe")
 ;; カレントバッファでdiff
@@ -39,6 +42,7 @@
 ;;; javascript-mode
 (load-library "javascript-mode")
 (push '("\\.js$" . javascript-mode) *auto-mode-alist*)
+(setf *javascript-indent-tabs-mode* nil)
 
 ;;; scala-mode
 (require "scala-mode")
