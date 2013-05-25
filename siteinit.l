@@ -45,6 +45,7 @@
 (load-library "javascript-mode")
 (push '("\\.js\\(on\\)?$" . javascript-mode) *auto-mode-alist*)
 (setf *javascript-indent-tabs-mode* nil)
+(define-key *javascript-mode-map* #\TAB 'javascript-indent-line)
 (undefine-key *javascript-mode-map* #\.)
 
 ;;; scala-mode
