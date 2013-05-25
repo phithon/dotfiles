@@ -47,6 +47,24 @@
 (setf *javascript-indent-tabs-mode* nil)
 (define-key *javascript-mode-map* #\TAB 'javascript-indent-line)
 (undefine-key *javascript-mode-map* #\.)
+;; インデントを何とかする
+; 元のインデント関数の保持
+(setf (symbol-function 'original-javascript-indent-line) #'javascript-indent-line)
+; 上手くインデントする
+(defun javascript-indent-line ()
+  (interactive)
+  ; オブジェクトのプロパティーの行がswitchのラベルに誤認されることへの対処
+  (let ((original-label-offset c-label-offset))
+    (setf c-label-offset 0)
+    (if (not (string-match "^[ \t]+}" (buffer-substring (save-excursion (goto-bol) (point))
+                                                        (save-excursion (goto-eol) (point)))))
+        (original-javascript-indent-line)
+      ; オブジェクトの閉じ括弧が前のプロパティー行の継続行と誤認されることへの対処
+      (let ((original-continued-offset c-continued-statement-offset))
+        (setf c-continued-statement-offset 0)
+        (original-javascript-indent-line)
+        (setf c-continued-statement-offset original-continued-offset)))
+    (setf c-label-offset original-label-offset)))
 
 ;;; scala-mode
 (require "scala-mode")
