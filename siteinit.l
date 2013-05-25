@@ -43,7 +43,7 @@
 
 ;;; javascript-mode
 (load-library "javascript-mode")
-(push '("\\.js$" . javascript-mode) *auto-mode-alist*)
+(push '("\\.js\\(on\\)?$" . javascript-mode) *auto-mode-alist*)
 (setf *javascript-indent-tabs-mode* nil)
 
 ;;; scala-mode
