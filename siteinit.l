@@ -46,6 +46,24 @@
 (define-auto-suffix *global-keymap* #\( ")")
 (define-auto-suffix *global-keymap* #\' "'")
 (define-auto-suffix *global-keymap* #\" "\"")
+;; 対応する括弧や引用符は勝手に消す
+(defun delete-backward-char-or-suffix-or-selection-factory (prefix-suffix-pair-list)
+  #'(lambda (&optional (n 1))
+      (interactive "*p")
+      ; selectionがあればそれを消す
+      (if (pre-selection-p)
+          (delete-selection)
+        ; カーソル位置が接頭・接尾ペアに挟まれているかどうか各組み合わせについて確認し、一致するものがあればまとめて消す
+        (if (not (dolist (element prefix-suffix-pair-list)
+                   (let ((prefix (car element))
+                         (suffix (cdr element)))
+                     (if (and (string= prefix (buffer-substring (point) (save-excursion (backward-char (length prefix)) (point))))
+                              (string= suffix (buffer-substring (point) (save-excursion (forward-char (length suffix)) (point)))))
+                         (progn (delete-backward-char (length prefix))
+                           (delete-char (length suffix))
+                           (return t))))))
+            ; マッチするものが無ければ普通のバックスペース
+            (delete-backward-char n)))))
 
 ;;; Git
 ;; C-x cで開くシェルをGit Bashにする
@@ -57,6 +75,9 @@
 (setf *javascript-indent-tabs-mode* nil)
 (define-key *javascript-mode-map* #\TAB 'javascript-indent-line)
 (undefine-key *javascript-mode-map* #\.)
+(define-key *javascript-mode-map* #\C-h
+            (delete-backward-char-or-suffix-or-selection-factory
+             '(("{"."}") ("[" . "]") ("(" . ")") ("'" . "'") ("\"" . "\""))))
 ;; インデントを何とかする
 ; 元のインデント関数の保持
 (setf (symbol-function 'original-javascript-indent-line) #'javascript-indent-line)
