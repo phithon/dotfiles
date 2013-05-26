@@ -36,6 +36,7 @@
 (define-key ctl-x-map #\3 'split-window-vertically)
 ;; C-x hでバッファ全体を選択
 (define-key ctl-x-map #\h 'selection-whole-buffer)
+(define-key ctl-x-map '(#\2 #\f) #'(lambda () (interactive) (find-file "~/site-lisp/siteinit.l")))
 
 ;;; Git
 ;; C-x cで開くシェルをGit Bashにする
