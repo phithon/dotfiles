@@ -12,6 +12,13 @@
 ;; インデントでタブを使わない
 (setf *lisp-indent-tabs-mode* nil)
 
+;;; paren
+(require "paren")
+(turn-on-global-paren)
+; (setq-default *paren-highlight-only-paren* t)
+; (setq-default *paren-continue-original-attribute* t)
+(setq-default *paren-tag-highlight* nil)
+
 ;;; diff
 ;; MinGWのdiffを使う
 (setf ed::*diff-command-name* "C:\\Progra~2\\Git\\bin\\diff.exe")
