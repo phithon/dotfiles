@@ -105,7 +105,13 @@
   "revoke indent for right brases"
   (interactive "*")
   (if (not (string-match "^[ \t]*}" (current-line-string)))
-      (original-javascript-indent-line)
+      (progn (original-javascript-indent-line)
+        ; 配列が余計にインデントされる現象への対処
+        (if (string-match "^[ \t]\\{4\\}[ \t]*\\]" (current-line-string))
+            (save-excursion
+              (goto-bol)
+              (scan-buffer "^[ \t]\\{4\\}\\([ \t]*\\)" :regexp t :limit (save-excursion (goto-eol) (point)))
+              (replace-match "\\1"))))
     ; 現在行が閉じ括弧で始まる場合、継続行のインデントを一時的に0にする
     (let ((original-continued-offset c-continued-statement-offset))
       (setf c-continued-statement-offset 0)
