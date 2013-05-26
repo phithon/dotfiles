@@ -37,6 +37,15 @@
 ;; C-x hでバッファ全体を選択
 (define-key ctl-x-map #\h 'selection-whole-buffer)
 (define-key ctl-x-map '(#\2 #\f) #'(lambda () (interactive) (find-file "~/site-lisp/siteinit.l")))
+;; 括弧や文字列は勝手に閉じる
+(defun define-auto-suffix (keymap key suffix)
+  "add suffixes automatically"
+  (define-key keymap key #'(lambda () (interactive "*") (insert key) (save-excursion (insert suffix)))))
+(define-auto-suffix *global-keymap* #\{ "}")
+(define-auto-suffix *global-keymap* #\[ "]")
+(define-auto-suffix *global-keymap* #\( ")")
+(define-auto-suffix *global-keymap* #\' "'")
+(define-auto-suffix *global-keymap* #\" "\"")
 
 ;;; Git
 ;; C-x cで開くシェルをGit Bashにする
