@@ -79,23 +79,45 @@
             (delete-backward-char-or-suffix-or-selection-factory
              '(("{"."}") ("[" . "]") ("(" . ")") ("'" . "'") ("\"" . "\""))))
 ;; インデントを何とかする
+;; switch文のラベルと誤認されることへの対処
+; var foo = {
+;    bar: ←ここでインデントを4つにする
+(setf c-label-offset 0)
+;; オブジェクトの閉じ括弧がプロパティー行の継続行と誤認されることへの対処
+; var foo = {
+;     bar: 'baz'
+; } ←ここでちゃんと左に寄せる
 ; 元のインデント関数の保持
 (setf (symbol-function 'original-javascript-indent-line) #'javascript-indent-line)
-; 上手くインデントする
+; 現在行を文字列として取り出す関数
+(defun current-line-string ()
+  "get current line as string"
+  (save-excursion (buffer-substring (progn (goto-bol) (point))
+                                    (progn (goto-eol) (point)))))
 (defun javascript-indent-line ()
-  (interactive)
-  ; オブジェクトのプロパティーの行がswitchのラベルに誤認されることへの対処
-  (let ((original-label-offset c-label-offset))
-    (setf c-label-offset 0)
-    (if (not (string-match "^[ \t]+}" (buffer-substring (save-excursion (goto-bol) (point))
-                                                        (save-excursion (goto-eol) (point)))))
-        (original-javascript-indent-line)
-      ; オブジェクトの閉じ括弧が前のプロパティー行の継続行と誤認されることへの対処
-      (let ((original-continued-offset c-continued-statement-offset))
-        (setf c-continued-statement-offset 0)
-        (original-javascript-indent-line)
-        (setf c-continued-statement-offset original-continued-offset)))
-    (setf c-label-offset original-label-offset)))
+  "revoke indent for right brases"
+  (interactive "*")
+  (if (not (string-match "^[ \t]*}" (current-line-string)))
+      (original-javascript-indent-line)
+    ; 現在行が閉じ括弧で始まる場合、継続行のインデントを一時的に0にする
+    (let ((original-continued-offset c-continued-statement-offset))
+      (setf c-continued-statement-offset 0)
+      (original-javascript-indent-line)
+      (setf c-continued-statement-offset original-continued-offset))))
+;; 中括弧内で改行したら展開してカーソルを中に入れる
+(defun javascript-newline-and-expand-brases (&optional (arg 1))
+  "open brases and move the cursor inside of the brases"
+  (interactive "*")
+  (javascript-newline-and-indent arg)
+  (flet ((current-line-string () (buffer-substring (progn (goto-bol) (point)) (progn (goto-eol) (point)))))
+    (if (or (save-excursion (and (string-match "^[ \t]*}" (current-line-string)) ; {}内で改行した場合
+                                 (string-match "{[ \t]*$" (progn (previous-line) (current-line-string)))))
+            (save-excursion (and (string-match "^[ \t]*\\]" (current-line-string)) ; []内で改行した場合
+                                 (string-match "\\[[ \t]*$" (progn (previous-line) (current-line-string))))))
+        (progn (save-excursion (javascript-newline-and-indent arg))
+          (javascript-indent-line)))))
+(define-key *javascript-mode-map* #\RET 'javascript-newline-and-expand-brases)
+(define-key *javascript-mode-map* #\LFD 'javascript-newline-and-expand-brases)
 
 ;;; scala-mode
 (require "scala-mode")
