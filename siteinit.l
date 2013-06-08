@@ -43,7 +43,7 @@
 (define-key ctl-x-map #\3 'split-window-vertically)
 ;; C-x hでバッファ全体を選択
 (define-key ctl-x-map #\h 'selection-whole-buffer)
-(define-key ctl-x-map '(#\2 #\f) #'(lambda () (interactive) (find-file "~/site-lisp/siteinit.l")))
+(define-key ctl-x-map '(#\4 #\s) #'(lambda () (interactive) (find-file "~/site-lisp/siteinit.l")))
 ;; 括弧や文字列は勝手に閉じる
 (defun define-auto-suffix (keymap key suffix)
   "add suffixes automatically"
