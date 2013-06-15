@@ -12,6 +12,9 @@
 ;; インデントでタブを使わない
 (setf *lisp-indent-tabs-mode* nil)
 
+;;; ファイラー
+;; 削除時にごみ箱を経由する
+(setf *filer-use-recycle-bin* t)
 ;;; paren
 (require "paren")
 (turn-on-global-paren)
