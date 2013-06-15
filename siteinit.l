@@ -15,6 +15,13 @@
 ;;; ファイラー
 ;; 削除時にごみ箱を経由する
 (setf *filer-use-recycle-bin* t)
+;; 開いているディレクトリーでシェルを起動
+(define-key filer-keymap '(#\C-x #\c)
+            #'(lambda ()
+                (interactive)
+                (call-process (or *eshell* *shell*) :no-std-handles t :show :show
+                              :exec-directory (filer-get-directory))))
+
 ;;; paren
 (require "paren")
 (turn-on-global-paren)
