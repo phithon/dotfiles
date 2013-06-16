@@ -145,3 +145,6 @@
 ;;; scala-mode
 (require "scala-mode")
 (push '("\\.scala$" . ed::scala-mode) *auto-mode-alist*)
+
+;;; ローカル設定の読み込み
+(load-library "local-settings")
