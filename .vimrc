@@ -9,7 +9,7 @@ set number
 " 数値コマンドを10進数として判定
 set nrformats=
 " アクティブなファイルのディレクトリーを手早く展開
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'\' : '%%'
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " %でタグ間なども飛べるようにする
 runtime macros/matchit.vim
 " 未保存のファイルがあってもバッファを切り替えられる
