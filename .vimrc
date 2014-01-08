@@ -30,7 +30,7 @@ set shellslash
 " 勝手に折り返さない
 autocmd FileType text setlocal textwidth=0
 " ステータスバーに色々表示
-set statusline=%t%m%r%h%w%y%q%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}\ \ %l\:%c\ \ %=%<%F
+set statusline=%t%m%r%h%w%y%q[%{&fenc!=''?&fenc:&enc}:%{&ff}]\ \ %l\:%c\ \ %=%<%{expand('%:p')}
 " バックアップファイルを作らない
 set nobackup
 
