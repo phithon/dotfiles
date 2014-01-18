@@ -33,4 +33,6 @@ autocmd FileType text setlocal textwidth=0
 set statusline=%t%m%r%h%w%y%q[%{&fenc!=''?&fenc:&enc}:%{&ff}]\ \ %l\:%c\ \ %=%<%{expand('%:p')}
 " バックアップファイルを作らない
 set nobackup
+" スワップファイルをまとめる
+set directory=$HOME/.vim/swapfiles//
 
