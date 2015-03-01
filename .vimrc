@@ -29,6 +29,11 @@ nnoremap <silent> ]Q :clast<CR>
 set shellslash
 " 勝手に折り返さない
 autocmd FileType text setlocal textwidth=0
+" 長い行も途中まで表示
+set display=lastline
+" 表示行で移動
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 " ステータスバーに色々表示
 set statusline=%t%m%r%h%w%y%q[%{&fenc!=''?&fenc:&enc}:%{&ff}]\ \ %l\:%c\ \ %=%<%{expand('%:p')}
 " バックアップファイルを作らない
