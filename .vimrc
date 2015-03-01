@@ -35,4 +35,6 @@ set statusline=%t%m%r%h%w%y%q[%{&fenc!=''?&fenc:&enc}:%{&ff}]\ \ %l\:%c\ \ %=%<%
 set nobackup
 " スワップファイルをまとめる
 set directory=$HOME/.vim/swapfiles//
+" 外部で変更されたファイルを自動的に再読み込み
+set autoread
 
