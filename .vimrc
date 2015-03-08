@@ -1,3 +1,6 @@
+" デフォルトの文字コードをUTF-8にする
+set encoding=utf-8
+set termencoding=cp932
 " タブの画面上での表示幅
 set tabstop=4
 " タブをスペースに展開する
