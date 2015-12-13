@@ -75,6 +75,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Note: You don't set neobundle setting in .gvimrc!
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'scrooloose/syntastic'
 
 call neobundle#end()
 
@@ -86,4 +87,13 @@ filetype plugin indent on
 NeoBundleCheck
 
 let g:user_emmet_settings = {'variables': {'lang': 'ja'}}
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jshint']
 
