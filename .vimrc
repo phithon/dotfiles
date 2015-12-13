@@ -28,6 +28,10 @@ nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]q :cnext<CR>
 nnoremap <silent> [Q :cfirst<CR>
 nnoremap <silent> ]Q :clast<CR>
+nnoremap <silent> [e :lprevious<CR>
+nnoremap <silent> ]e :lnext<CR>
+nnoremap <silent> [E :lfirst<CR>
+nnoremap <silent> ]E :llast<CR>
 " ファイル名にスラッシュを使う
 set shellslash
 " 勝手に折り返さない
