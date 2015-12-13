@@ -7,8 +7,12 @@ set tabstop=4
 set expandtab
 " インデントサイズ
 set shiftwidth=4
+" 上手くインデントする
+set autoindent
 " 行番号を表示
 set number
+" 検索結果のハイライト
+set incsearch
 " 数値コマンドを10進数として判定
 set nrformats=
 " アクティブなファイルのディレクトリーを手早く展開
@@ -41,6 +45,8 @@ set display=lastline
 " 表示行で移動
 nnoremap <silent> j gj
 nnoremap <silent> k gk
+" ステータス行を2行に
+set laststatus=2
 " ステータスバーに色々表示
 set statusline=%t%m%r%h%w%y%q[%{&fenc!=''?&fenc:&enc}:%{&ff}]\ \ %l\:%c\ \ %=%<%{expand('%:p')}
 " バックアップファイルを作らない
