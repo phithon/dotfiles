@@ -55,6 +55,8 @@ set nobackup
 set directory=$HOME/.vim/swapfiles//
 " 外部で変更されたファイルを自動的に再読み込み
 set autoread
+" ファイル関連付け
+au BufNewFile,BufRead *.jshintrc setf javascript
 
 " NeoBundle
 " Note: Skip initialization for vim-tiny or vim-small.
