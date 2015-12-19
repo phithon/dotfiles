@@ -6,6 +6,10 @@ alias la='ls -a'
 alias l.='ls -d .*'
 
 function gvim() {
-    $HOME/tools/vim/gvim.exe -p --remote-tab-silent $* &
+    if [ $# -eq 0 ]; then
+        $HOME/tools/vim/gvim.exe &
+    else
+        $HOME/tools/vim/gvim.exe --remote-tab-silent $* &
+    fi
 }
 
