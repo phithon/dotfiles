@@ -81,6 +81,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " My Bundles here:
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'scrooloose/syntastic'
@@ -94,6 +96,17 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 " NeoBundleCheck
+
+" Unite bindings
+nnoremap    [unite]   <Nop>
+nmap    f [unite]
+nnoremap <silent> [unite]f  :<C-u>Unite file<CR>
+nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir -buffer-name=files buffer bookmark file<CR>
+nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer bookmark file<CR>
+nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register<CR>
+
+" VimFiler settings
+let g:vimfiler_as_default_explorer = 1
 
 let g:user_emmet_settings = {'variables': {'lang': 'ja'}}
 " syntastic settings
