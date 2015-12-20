@@ -84,6 +84,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'elzr/vim-json'
 
 call neobundle#end()
 
