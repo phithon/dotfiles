@@ -111,7 +111,16 @@ nnoremap <silent> [unite]r  :<C-u>Unite -buffer-name=register register<CR>
 " VimFiler settings
 let g:vimfiler_as_default_explorer = 1
 
+" html and emmet settings
 let g:user_emmet_settings = {'variables': {'lang': 'ja'}}
+autocmd FileType html inoremap <buffer> </ </<C-x><C-o>
+autocmd FileType html inoremap <buffer> ddt data-dojo-type=
+
+" js settings
+autocmd FileType javascript setlocal suffixesadd=.js isfname-=!
+autocmd FileType javascript inoreabbrev <buffer> fn function() {}<Left>
+autocmd FileType javascript inoreabbrev <buffer> tin this.inherited(arguments);
+
 " syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
