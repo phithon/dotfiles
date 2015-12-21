@@ -9,3 +9,7 @@ if has('multi_byte_ime') || has('xim')
   set iminsert=0 imsearch=0
 endif
 
+" メニューバーとツールバーを消す
+set guioptions-=m
+set guioptions-=T
+
