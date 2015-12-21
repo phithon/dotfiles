@@ -87,6 +87,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'elzr/vim-json'
 
