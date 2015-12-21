@@ -11,8 +11,10 @@ set shiftwidth=4
 set autoindent
 " 行番号を表示
 set number
-" 検索結果のハイライト
+" インクリメンタルサーチ
 set incsearch
+" 検索結果のハイライト
+set hlsearch
 " 数値コマンドを10進数として判定
 set nrformats=
 " アクティブなファイルのディレクトリーを手早く展開
