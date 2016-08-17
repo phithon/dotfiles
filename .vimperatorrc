@@ -1,0 +1,22 @@
+" vim: set ft=vim:
+source! "~/.vimperatorrc.local"
+
+" 補完用
+cnoremap <C-n> <Tab>
+cnoremap <C-p> <S-Tab>
+
+" 移動系
+nnoremap h gT
+nnoremap l gt
+nnoremap H <Left>
+nnoremap L <Right>
+" タブを閉じた際の挙動を通常と同じにする
+nnoremap d <C-w>
+" 閉じたタブを一覧から選べるようにする
+nnoremap U :undo<Space>
+
+" UI全部出す
+set gui=all
+" commmandモードでIMEを切る
+style! -name=commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
+
