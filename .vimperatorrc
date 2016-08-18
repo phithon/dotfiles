@@ -8,8 +8,8 @@ cnoremap <C-p> <S-Tab>
 " 移動系
 nnoremap h gT
 nnoremap l gt
-nnoremap H <Left>
-nnoremap L <Right>
+nnoremap <C-h> <Left>
+nnoremap <C-l> <Right>
 " タブを閉じた際の挙動を通常と同じにする
 nnoremap d <C-w>
 " 閉じたタブを一覧から選べるようにする
