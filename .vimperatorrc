@@ -2,8 +2,8 @@
 source! "~/.vimperatorrc.local"
 
 " 補完用
-cnoremap <C-n> <Tab>
-cnoremap <C-p> <S-Tab>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
 
 " 移動系
 nnoremap h gT
