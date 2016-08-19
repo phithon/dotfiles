@@ -20,3 +20,9 @@ set gui=all
 " commmandモードでIMEを切る
 style! -name=commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
 
+" ヒント
+set hintchars=asdfghjkl;qwertyuiopzxcvbnm,./
+highlight Hint color: #FCC; font-family: Arial; font-size: 18px; font-weight: bold; text-shadow: -1px -1px 0 #300, 1px -1px 0 #300, -1px 1px 0 #300, 1px 1px 0 #300;
+highlight HintElem color: #666; background-color: #CCF;
+highlight HintActive color: black; background-color: #FC3;
+
