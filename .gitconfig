@@ -1,0 +1,26 @@
+[include]
+    path = .gitconfig.local
+[core]
+    autocrlf = true
+    editor = gvim
+[color]
+    ui = auto
+[push]
+    default = simple
+[alias]
+    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t\\2/' | sort
+    b = branch
+    ci = commit
+    co = checkout
+    d = diff
+    dc = diff --cached
+    # log
+    l = log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'
+    # log with status
+    ls = log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset' --name-status
+    # log with patches
+    lp = log --oneline -n 20 -p
+    # log with overviews
+    lo = log --stat
+    s = status --short --branch
+    st = status
