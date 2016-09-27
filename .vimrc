@@ -116,6 +116,9 @@ let g:user_emmet_settings = {'variables': {'lang': 'ja'}}
 autocmd FileType html inoremap <buffer> </ </<C-x><C-o>
 autocmd FileType html inoremap <buffer> ddt data-dojo-type=
 
+" css settings
+autocmd FileType css setlocal suffixesadd=.css
+
 " js settings
 autocmd FileType javascript setlocal suffixesadd=.js isfname-=!
 autocmd FileType javascript inoreabbrev <buffer> fn function() {}<Left>
