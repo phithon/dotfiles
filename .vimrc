@@ -88,6 +88,7 @@ NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'elzr/vim-json'
 
 call neobundle#end()
