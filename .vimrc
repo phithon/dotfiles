@@ -60,7 +60,9 @@ set directory=$HOME/.vim/swapfiles//
 " 外部で変更されたファイルを自動的に再読み込み
 set autoread
 " ファイル関連付け
-au BufNewFile,BufRead *.jshintrc setf javascript
+au BufNewFile,BufRead *.ddl setf sql
+au BufNewFile,BufRead *.jshintrc,.bowerrc,.babelrc setf json
+au BufNewFile,BufRead Vagrantfile setf ruby
 
 " NeoBundle
 " Note: Skip initialization for vim-tiny or vim-small.
