@@ -11,6 +11,8 @@ set shiftwidth=4
 set autoindent
 " 行番号を表示
 set number
+" シンタックスハイライトを有効化
+syntax on
 " インクリメンタルサーチ
 set incsearch
 " 検索結果のハイライト
