@@ -4,6 +4,8 @@ alias ls='ls --color=auto'
 alias ll='ls -l'
 alias la='ls -a'
 alias l.='ls -d .*'
+alias gits='git s'
+alias nwin='$HOME/tools/Git/git-bash.exe &'
 
 function gvim() {
     if [ $# -eq 0 ]; then
