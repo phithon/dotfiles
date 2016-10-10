@@ -91,10 +91,13 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'scrooloose/syntastic'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'ekalinin/Dockerfile.vim'
+NeoBundle 'ntpeters/vim-better-whitespace'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
 
 call neobundle#end()
 
