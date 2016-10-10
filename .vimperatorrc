@@ -1,5 +1,5 @@
 " vim: set ft=vim:
-source! "~/.vimperatorrc.local"
+source! ~/.vimperatorrc.local
 
 " 補完用
 cnoremap <C-n> <Down>
