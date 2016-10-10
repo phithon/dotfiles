@@ -90,6 +90,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'elzr/vim-json'
+NeoBundle 'ekalinin/Dockerfile.vim'
 
 call neobundle#end()
 
